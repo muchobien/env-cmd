@@ -13,7 +13,9 @@ cd npm
 
 yarn version --new-version $VERSION
 
+cd ..
+
 git commit -am "chore: release version $VERSION"
 git tag -a v$VERSION -m "chore: release version $VERSION"
 git push
-git push --tags
+git push origin v$VERSION
