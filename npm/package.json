@@ -1,0 +1,35 @@
+{
+  "name": "@muchobien/env-cmd",
+  "version": "0.0.0",
+  "description": "Load environment variables from .env file and execute commands",
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "mkdir bin && touch bin/env-cmd",
+    "postinstall": "node postinstall.js",
+    "build": "tsc"
+  },
+  "bin": {
+    "env-cmd": "./bin/env-cmd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muchobien/env-cmd.git"
+  },
+  "homepage": "https://github.com/muchobien/env-cmd",
+  "files": [
+    "bin",
+    "LICENSE.md",
+    "postinstall.js"
+  ],
+  "dependencies": {
+    "node-fetch": "2.6.7",
+    "unzipper": "0.10.11"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "2.6.2",
+    "@types/request": "2.48.8",
+    "@types/tar": "6.1.2",
+    "@types/unzipper": "0.10.5",
+    "typescript": "4.7.4"
+  }
+}

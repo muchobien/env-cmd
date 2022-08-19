@@ -1,0 +1,51 @@
+project_name: env-cmd
+
+dist: .builds
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: ./cmd/main.go
+    binary: env-cmd
+    ldflags:
+      - -s -w -X github.com/muchobien/env-cmd/build.Version={{ .Version }} -X github.com/muchobien/env-cmd/build.Date={{time "2006-01-02"}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - "7"
+    ignore:
+      - goos: windows
+        goarch: arm
+      - goos: darwin
+        goarch: arm
+
+release:
+  draft: true
+
+archives:
+  - format: zip
+    files:
+      - LICENSE*
+      - CHANGELOG*
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: '{{ incpatch .Version }}-next'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^chore:'
