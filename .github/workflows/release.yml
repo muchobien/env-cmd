@@ -44,6 +44,7 @@ jobs:
           node-version: 16
           cache: "yarn"
           cache-dependency-path: npm/yarn.lock
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
