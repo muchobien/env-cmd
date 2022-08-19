@@ -4,7 +4,7 @@
   "description": "Load environment variables from .env file and execute commands",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "mkdir bin && touch bin/env-cmd",
+    "prepublishOnly": "mkdir bin && touch bin/env-cmd && cp ../README.md .",
     "postinstall": "node postinstall.js",
     "build": "tsc"
   },

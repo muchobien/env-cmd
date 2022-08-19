@@ -30,7 +30,7 @@ builds:
         goarch: arm
 
 release:
-  draft: true
+  draft: false
 
 archives:
   - format: zip
@@ -49,3 +49,4 @@ changelog:
   filters:
     exclude:
       - '^chore:'
+      - '^docs:'
