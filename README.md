@@ -54,10 +54,20 @@ npx env-cmd -f ./custom/path/.env,./other/path/.env node index.js
 ## 📜 Help
 
 ```text
-Usage: env-cmd [options] <command> [...args]
+NAME:
+   env-cmd - Load environment variables from .env file and execute commands
 
-Options:
-  -v, --version                       output the version number
-  -f, --file [paths]                  Custom env file path (default paths: ./.env)
-  -h, --help                          output usage information
+USAGE:
+   env-cmd [global options] command [command options] [arguments...]
+
+VERSION:
+   0.0.5
+
+COMMANDS:
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --file value, -f value  Paths to env files (default: ".env")  (accepts multiple inputs)
+   --help, -h              show help (default: false)
+   --version, -v           print the version (default: false)
 ```
