@@ -50,7 +50,7 @@ async function getBinaryUrl(): Promise<URL> {
 
   const { arch, platform } = getArchPlatform();
   const targetUrl = new URL(
-    `https://github.com/pocketbase/pocketbase/releases/download/v${version}/pocketbase_${version}_${platform.platform}_${arch}${platform.extension}`
+    `https://github.com/muchobien/env-cmd/releases/download/v${version}/env-cmd_${version}_${platform.platform}_${arch}${platform.extension}`
   );
 
   return targetUrl;
