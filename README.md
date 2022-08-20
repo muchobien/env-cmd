@@ -61,12 +61,14 @@ USAGE:
    env-cmd [global options] command [command options] [arguments...]
 
 VERSION:
-   0.0.5
+   0.0.0
 
 COMMANDS:
+   list, l  List environment variables
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
+   --env value, -e value   Additional environment variables      (accepts multiple inputs)
    --file value, -f value  Paths to env files (default: ".env")  (accepts multiple inputs)
    --help, -h              show help (default: false)
    --version, -v           print the version (default: false)
