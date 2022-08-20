@@ -5,35 +5,31 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
-	"github.com/muchobien/env-cmd/build"
-	"github.com/muchobien/env-cmd/commands"
+	"github.com/muchobien/env-cmd/internal/build"
+	"github.com/muchobien/env-cmd/internal/commands"
+	"github.com/muchobien/env-cmd/internal/common"
 	"github.com/urfave/cli/v2"
 )
 
 func main() {
 	app := &cli.App{
-		Name:    "env-cmd",
-		Usage:   "Load environment variables from .env file and execute commands",
-		Version: build.Version,
-		Action: func(cCtx *cli.Context) error {
-			cmd := cCtx.Args().First()
-			cmdArgs := cCtx.Args().Tail()
-
-			if cmd == "" {
-				return fmt.Errorf("no command given")
-			}
-
-			envFilenames := cCtx.StringSlice("file")
-
-			return godotenv.Exec(envFilenames, cmd, cmdArgs)
-		},
+		Name:        "env-cmd",
+		Usage:       "Load environment variables from .env file and execute commands",
+		Version:     build.Version,
+		Compiled:    build.Compiled,
+		Action:      Entrypoint(),
+		HideVersion: false,
 		Flags: []cli.Flag{
 			&cli.StringSliceFlag{
 				Name:    "file",
 				Aliases: []string{"f"},
 				Value:   cli.NewStringSlice(".env"),
 				Usage:   "Paths to env files",
+			},
+			&cli.StringSliceFlag{
+				Name:    "env",
+				Aliases: []string{"e"},
+				Usage:   "Additional environment variables",
 			},
 		},
 		Commands: []*cli.Command{
@@ -45,4 +41,20 @@ func main() {
 		log.Fatal(err)
 	}
 
+}
+
+func Entrypoint() func(cCtx *cli.Context) error {
+	return func(cCtx *cli.Context) error {
+		cmd := cCtx.Args().First()
+		cmdArgs := cCtx.Args().Tail()
+
+		if cmd == "" {
+			return fmt.Errorf("no command given")
+		}
+
+		envFilenames := cCtx.StringSlice("file")
+		extraEnvs := cCtx.StringSlice("env")
+
+		return common.Exec(envFilenames, cmd, cmdArgs, extraEnvs)
+	}
 }

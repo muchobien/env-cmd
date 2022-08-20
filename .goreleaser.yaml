@@ -10,7 +10,10 @@ builds:
   - main: ./cmd/main.go
     binary: env-cmd
     ldflags:
-      - -s -w -X github.com/muchobien/env-cmd/build.Version={{ .Version }} -X github.com/muchobien/env-cmd/build.Date={{time "2006-01-02"}}
+      - -s
+      - -w
+      - -X github.com/muchobien/env-cmd/internal/build.Version={{ .Version }}
+      - -X github.com/muchobien/env-cmd/internal/build.Date={{time "2006-01-02"}}
     env:
       - CGO_ENABLED=0
     goos:
