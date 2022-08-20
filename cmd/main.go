@@ -7,6 +7,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/muchobien/env-cmd/build"
+	"github.com/muchobien/env-cmd/commands"
 	"github.com/urfave/cli/v2"
 )
 
@@ -34,6 +35,9 @@ func main() {
 				Value:   cli.NewStringSlice(".env"),
 				Usage:   "Paths to env files",
 			},
+		},
+		Commands: []*cli.Command{
+			commands.List(),
 		},
 	}
 
