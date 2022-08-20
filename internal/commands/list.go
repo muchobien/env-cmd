@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/joho/godotenv"
+	"github.com/muchobien/env-cmd/internal/common"
 	"github.com/urfave/cli/v2"
 )
 
@@ -21,9 +21,10 @@ func List() *cli.Command {
 		},
 		Usage: "List environment variables",
 		Action: func(cCtx *cli.Context) error {
-			envFilenames := cCtx.StringSlice("file")
+			filenames := cCtx.StringSlice("file")
+			extraEnvs := cCtx.StringSlice("env")
 
-			dict, err := godotenv.Read(envFilenames...)
+			dict, err := common.Read(filenames, extraEnvs)
 
 			if err != nil {
 				return err
