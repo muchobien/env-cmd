@@ -44,11 +44,11 @@ To use a custom env filename or path, pass the `-f` flag.
 **Terminal**
 
 ```sh
-yarn env-cmd -f ./custom/path/.env,./other/path/.env node index.js
+yarn env-cmd -f ./custom/path/.env -f ./other/path/.env node index.js
 ```
 
 ```sh
-npx env-cmd -f ./custom/path/.env,./other/path/.env node index.js
+npx env-cmd -f ./custom/path/.env -f ./other/path/.env node index.js
 ```
 
 ## 📜 Help
