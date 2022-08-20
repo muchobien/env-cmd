@@ -72,4 +72,5 @@ GLOBAL OPTIONS:
    --file value, -f value  Paths to env files (default: ".env")  (accepts multiple inputs)
    --help, -h              show help (default: false)
    --version, -v           print the version (default: false)
+   --watch, -w             Watch for changes in .env files and reload them (default: false)
 ```
