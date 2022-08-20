@@ -7,9 +7,10 @@ import (
 	"path/filepath"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/urfave/cli/v2"
 )
 
-func Watch(files []string, cmd string, cmdArgs []string, extraEnvs []string) error {
+func Watch(cCtx *cli.Context) error {
 	// Create a new watcher.
 	w, err := fsnotify.NewWatcher()
 	if err != nil {
@@ -17,8 +18,10 @@ func Watch(files []string, cmd string, cmdArgs []string, extraEnvs []string) err
 	}
 	defer w.Close()
 
+	files := cCtx.StringSlice("file")
+
 	// Start listening for events.
-	go fileLoop(w, files, cmd, cmdArgs, extraEnvs)
+	go fileLoop(w, files, cCtx)
 
 	// Add all files.
 	for _, p := range files {
@@ -43,7 +46,7 @@ func Watch(files []string, cmd string, cmdArgs []string, extraEnvs []string) err
 	return nil
 }
 
-func fileLoop(w *fsnotify.Watcher, files []string, cmd string, cmdArgs []string, extraEnvs []string) {
+func fileLoop(w *fsnotify.Watcher, files []string, cCtx *cli.Context) {
 	for {
 		select {
 		// Read from Errors.
@@ -76,7 +79,7 @@ func fileLoop(w *fsnotify.Watcher, files []string, cmd string, cmdArgs []string,
 
 			log.Printf("%s changed reloading\n", e.Name)
 
-			err := Exec(files, cmd, cmdArgs, extraEnvs)
+			err := Exec(cCtx)
 			if err != nil {
 				log.Printf("ERROR: %s\n", err)
 			}

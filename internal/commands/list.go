@@ -21,10 +21,7 @@ func List() *cli.Command {
 		},
 		Usage: "List environment variables",
 		Action: func(cCtx *cli.Context) error {
-			filenames := cCtx.StringSlice("file")
-			extraEnvs := cCtx.StringSlice("env")
-
-			dict, err := common.Read(filenames, extraEnvs)
+			dict, err := common.Read(cCtx)
 
 			if err != nil {
 				return err

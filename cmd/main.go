@@ -21,15 +21,21 @@ func main() {
 		HideVersion: false,
 		Flags: []cli.Flag{
 			&cli.StringSliceFlag{
+				Name:    "env",
+				Aliases: []string{"e"},
+				Usage:   "Additional environment variables",
+			},
+			&cli.StringSliceFlag{
 				Name:    "file",
 				Aliases: []string{"f"},
 				Value:   cli.NewStringSlice(".env"),
 				Usage:   "Paths to env files",
 			},
-			&cli.StringSliceFlag{
-				Name:    "env",
-				Aliases: []string{"e"},
-				Usage:   "Additional environment variables",
+			&cli.BoolFlag{
+				Name:    "override",
+				Value:   true,
+				Aliases: []string{"o"},
+				Usage:   "Override existing environment variables with new ones",
 			},
 			&cli.BoolFlag{
 				Name:    "watch",
@@ -52,25 +58,22 @@ func main() {
 func Entrypoint() func(cCtx *cli.Context) error {
 	return func(cCtx *cli.Context) error {
 		cmd := cCtx.Args().First()
-		cmdArgs := cCtx.Args().Tail()
 
 		if cmd == "" {
 			return fmt.Errorf("no command given")
 		}
 
-		envFilenames := cCtx.StringSlice("file")
-		extraEnvs := cCtx.StringSlice("env")
 		watch := cCtx.Bool("watch")
 
 		if watch {
-			err := common.Exec(envFilenames, cmd, cmdArgs, extraEnvs)
+			err := common.Exec(cCtx)
 			if err != nil {
 				fmt.Printf("Command %s failed: %s\n", cmd, err)
 			}
 
-			return common.Watch(envFilenames, cmd, cmdArgs, extraEnvs)
+			return common.Watch(cCtx)
 		}
 
-		return common.Exec(envFilenames, cmd, cmdArgs, extraEnvs)
+		return common.Exec(cCtx)
 	}
 }
