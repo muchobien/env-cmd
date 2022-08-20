@@ -31,6 +31,12 @@ func main() {
 				Aliases: []string{"e"},
 				Usage:   "Additional environment variables",
 			},
+			&cli.BoolFlag{
+				Name:    "watch",
+				Aliases: []string{"w"},
+				Value:   false,
+				Usage:   "Watch for changes in .env files and reload them",
+			},
 		},
 		Commands: []*cli.Command{
 			commands.List(),
@@ -54,6 +60,16 @@ func Entrypoint() func(cCtx *cli.Context) error {
 
 		envFilenames := cCtx.StringSlice("file")
 		extraEnvs := cCtx.StringSlice("env")
+		watch := cCtx.Bool("watch")
+
+		if watch {
+			err := common.Exec(envFilenames, cmd, cmdArgs, extraEnvs)
+			if err != nil {
+				fmt.Printf("Command %s failed: %s\n", cmd, err)
+			}
+
+			return common.Watch(envFilenames, cmd, cmdArgs, extraEnvs)
+		}
 
 		return common.Exec(envFilenames, cmd, cmdArgs, extraEnvs)
 	}
