@@ -4,7 +4,7 @@ A simple program for executing commands using an environment from an env file.
 
 ## 💾 Install
 
-`npm install env-cmd -D` or `yarn add env-cmd -D`
+`npm install @muchobien/env-cmd -D` or `yarn add @muchobien/env-cmd -D`
 
 ## ⌨️ Basic Usage
 
