@@ -73,6 +73,7 @@ GLOBAL OPTIONS:
    --help, -h              show help (default: false)
    --interpolate, -i       Interpolate environment variables in command arguments (default: false)
    --override, -o          Override existing environment variables with new ones (default: true)
+   --silent, -s            Ignore errors if .env file is not found (default: false)
    --version, -v           print the version (default: false)
    --watch, -w             Watch for changes in .env files and reload them (default: false)
 ```
