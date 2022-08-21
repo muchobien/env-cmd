@@ -39,6 +39,7 @@ func readFiles(filenames []string, silent bool) (envMap map[string]string, err e
 		individualEnvMap, individualErr := readFile(filename)
 
 		if silent {
+			fmt.Fprintf(os.Stderr, "Warning: %s\n", individualErr)
 			continue
 		}
 
