@@ -1,5 +1,7 @@
 <p align="center">
-<img alt="npm" src="https://img.shields.io/npm/v/@muchobien/env-cmd?color=success&logo=npm&style=flat-square">
+   <a aria-label="NPM Package" href="https://www.npmjs.com/package/@muchobien/env-cmd" target="_blank">
+      <img alt="npm" src="https://img.shields.io/npm/v/@muchobien/env-cmd?color=success&logo=npm&style=flat-square">
+   </a>
 </P>
 
 # env-cmd
