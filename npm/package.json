@@ -1,6 +1,6 @@
 {
   "name": "@muchobien/env-cmd",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Load environment variables from .env file and execute commands",
   "license": "MIT",
   "scripts": {
