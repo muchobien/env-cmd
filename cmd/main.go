@@ -44,6 +44,12 @@ func main() {
 				Usage:   "Override existing environment variables with new ones",
 			},
 			&cli.BoolFlag{
+				Name:    "silent",
+				Aliases: []string{"s"},
+				Value:   false,
+				Usage:   "Ignore errors if .env file is not found",
+			},
+			&cli.BoolFlag{
 				Name:    "watch",
 				Aliases: []string{"w"},
 				Value:   false,
