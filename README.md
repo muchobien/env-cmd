@@ -1,3 +1,7 @@
+<p align="center">
+<img alt="npm" src="https://img.shields.io/npm/v/@muchobien/env-cmd?color=success&logo=npm&style=flat-square">
+</P>
+
 # env-cmd
 
 A simple program for executing commands using an environment from an env file.
@@ -77,3 +81,7 @@ GLOBAL OPTIONS:
    --version, -v           print the version (default: false)
    --watch, -w             Watch for changes in .env files and reload them (default: false)
 ```
+
+## 🧬 Related Projects
+
+[`toddbluhm/env-cmd`](https://github.com/toddbluhm/env-cmd) - Orginal project that inspired this one.
