@@ -71,6 +71,8 @@ GLOBAL OPTIONS:
    --env value, -e value   Additional environment variables      (accepts multiple inputs)
    --file value, -f value  Paths to env files (default: ".env")  (accepts multiple inputs)
    --help, -h              show help (default: false)
+   --interpolate, -i       Interpolate environment variables in command arguments (default: false)
+   --override, -o          Override existing environment variables with new ones (default: true)
    --version, -v           print the version (default: false)
    --watch, -w             Watch for changes in .env files and reload them (default: false)
 ```

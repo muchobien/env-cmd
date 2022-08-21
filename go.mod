@@ -4,6 +4,8 @@ go 1.19
 
 require github.com/urfave/cli/v2 v2.11.2
 
+require github.com/cbroglie/mustache v1.4.0
+
 require (
 	github.com/fsnotify/fsnotify v1.5.4
 	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect

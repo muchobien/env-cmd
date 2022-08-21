@@ -32,6 +32,12 @@ func main() {
 				Usage:   "Paths to env files",
 			},
 			&cli.BoolFlag{
+				Name:    "interpolate",
+				Aliases: []string{"i"},
+				Value:   false,
+				Usage:   "Interpolate environment variables in command arguments",
+			},
+			&cli.BoolFlag{
 				Name:    "override",
 				Value:   true,
 				Aliases: []string{"o"},
