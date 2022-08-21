@@ -3,6 +3,18 @@
   "version": "0.0.8",
   "description": "Load environment variables from .env file and execute commands",
   "license": "MIT",
+  "keywords": [
+    "env",
+    "environment",
+    "cli",
+    "command",
+    "cmd",
+    "execute",
+    "run",
+    "file",
+    "variables",
+    "config"
+  ],
   "scripts": {
     "prepublishOnly": "mkdir bin && touch bin/env-cmd && cp ../README.md .",
     "postinstall": "node postinstall.js",
@@ -15,7 +27,14 @@
     "type": "git",
     "url": "git+https://github.com/muchobien/env-cmd.git"
   },
-  "homepage": "https://github.com/muchobien/env-cmd",
+  "author": {
+    "name": "Rodrigo Sanabria",
+    "email": "rodrigo@sanabria.dev"
+  },
+  "bugs": {
+    "url": "https://github.com/muchobien/env-cmd/issues"
+  },
+  "homepage": "https://github.com/muchobien/env-cmd#readme",
   "files": [
     "bin",
     "LICENSE.md",
