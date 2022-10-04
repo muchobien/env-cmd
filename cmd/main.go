@@ -55,6 +55,12 @@ func main() {
 				Value:   false,
 				Usage:   "Watch for changes in .env files and reload them",
 			},
+			&cli.StringFlag{
+				Name:    "prefix",
+				Aliases: []string{"p"},
+				Value:   "",
+				Usage:   "Prefix for environment variables",
+			},
 		},
 		Commands: []*cli.Command{
 			commands.List(),

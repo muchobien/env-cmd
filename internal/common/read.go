@@ -13,6 +13,7 @@ func Read(cCtx *cli.Context) (dict map[string]string, err error) {
 	filenames := cCtx.StringSlice("file")
 	extraEnvs := cCtx.StringSlice("env")
 	silent := cCtx.Bool("silent")
+	prefix := cCtx.String("prefix")
 
 	dict, err = readFiles(filenames, silent)
 
@@ -27,6 +28,10 @@ func Read(cCtx *cli.Context) (dict map[string]string, err error) {
 			return
 		}
 		dict[kv[0]] = kv[1]
+	}
+
+	if prefix != "" {
+		dict = prefixDict(dict, prefix)
 	}
 
 	return
@@ -64,4 +69,14 @@ func readFile(filename string) (envMap map[string]string, err error) {
 	defer file.Close()
 
 	return godotenv.Parse(file)
+}
+
+func prefixDict(dict map[string]string, prefix string) map[string]string {
+	prefixedDict := make(map[string]string)
+
+	for key, value := range dict {
+		prefixedDict[prefix+key] = value
+	}
+
+	return prefixedDict
 }

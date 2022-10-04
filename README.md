@@ -74,14 +74,15 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --env value, -e value   Additional environment variables      (accepts multiple inputs)
-   --file value, -f value  Paths to env files (default: ".env")  (accepts multiple inputs)
-   --help, -h              show help (default: false)
-   --interpolate, -i       Interpolate environment variables in command arguments (default: false)
-   --override, -o          Override existing environment variables with new ones (default: true)
-   --silent, -s            Ignore errors if .env file is not found (default: false)
-   --version, -v           print the version (default: false)
-   --watch, -w             Watch for changes in .env files and reload them (default: false)
+   --env value, -e value [ --env value, -e value ]    Additional environment variables
+   --file value, -f value [ --file value, -f value ]  Paths to env files (default: ".env")
+   --help, -h                                         show help (default: false)
+   --interpolate, -i                                  Interpolate environment variables in command arguments (default: false)
+   --override, -o                                     Override existing environment variables with new ones (default: true)
+   --prefix value, -p value                           Prefix for environment variables
+   --silent, -s                                       Ignore errors if .env file is not found (default: false)
+   --version, -v                                      print the version (default: false)
+   --watch, -w                                        Watch for changes in .env files and reload them (default: false)
 ```
 
 ## 🧬 Related Projects
