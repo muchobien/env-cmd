@@ -2,7 +2,7 @@ module github.com/muchobien/env-cmd
 
 go 1.19
 
-require github.com/urfave/cli/v2 v2.19.2
+require github.com/urfave/cli/v2 v2.23.7
 
 require github.com/cbroglie/mustache v1.4.0
 
